@@ -29,4 +29,15 @@ def hand_out_cards(deck, dealer, player):
     player['hand'].append(random.choice(deck))
     player['hand'].append(random.choice(deck))
     
-    
+def check_for_win(player, dealer):
+    if player['score'] >21:
+       print(f"Your score is {player['score']} 🫨 you lose 😓") 
+    elif dealer['score']>21:
+        print(f"Dealer score is {dealer['score']} 😆 you win 🎖")    
+    elif player['score'] == 21:
+        if dealer['score']== 21:
+            print("its a draw! 😑 😐")
+        print('blackjack! 🥷 you win! 🤑 ')
+    elif dealer['score'] == 21:
+        print("Dealer has a blackjack 😞 You lose")    
+        

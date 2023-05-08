@@ -60,9 +60,11 @@ while want_to_play == 'y':
     print(f"Your hand  is {player['hand']}")
     
     get_score(participant=player)
+    get_score(participant=dealer)
+    print(f'Testing... Dealer score is : {dealer["score"]}')
     
-    print(player['score'])
-    
+    print(f"And your score is {player['score']}")
+    dealer_actions.check_for_win(player=player,dealer=dealer)
     #does dealer have blackjack? NO? ok game continues!
      #case Dealer has, does the player also have a blackjack?
       #if he does it is a draw, if he doesn't, player loses!
