@@ -33,7 +33,7 @@ def reset_game(player, dealer):
     dealer['score']=0
     dealer['hand']=[]
     
-    
+is_game_over = False    
 print("welcome to python game blackjack!")
 ############### Our Blackjack House Rules #####################
 ## The deck is unlimited in size. 
@@ -64,14 +64,16 @@ while want_to_play == 'y':
     print(f'Testing... Dealer score is : {dealer["score"]}')
     
     print(f"And your score is {player['score']}")
-    dealer_actions.check_for_win(player=player,dealer=dealer)
+    is_game_over = dealer_actions.check_for_win(player=player,dealer=dealer,)
     #does dealer have blackjack? NO? ok game continues!
      #case Dealer has, does the player also have a blackjack?
       #if he does it is a draw, if he doesn't, player loses!
       
-   
+   #outer variables? if they're true, continue.
+    if is_game_over :
+        continue
    #player draw one more card?
-   
+    
    #if yes: is player_score > 21? player loser: draw one more card?
    #if no: if dealer_score =>17 : DEALER STANDS*
    #ELSE:DEALER DRAWS UNTIL SCORE >= 17*
