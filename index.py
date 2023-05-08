@@ -15,6 +15,18 @@ dealer = {
         'score': 0,
         'hand': []  
            }
+def get_score(participant):
+    """
+    Calculates the current score for the specified participant in a game of blackjack.
+
+    Args:
+        participant: A dictionary representing the participant, with keys for 'score' and 'hand'.
+
+    Returns:
+        None. The participant's 'score' key is updated to the sum of the integers in their 'hand' list.
+    """
+    participant['score'] = sum(participant['hand'])
+    
 def reset_game(player, dealer):
     player['score']=0
     player['hand']=[]
@@ -39,11 +51,17 @@ while want_to_play == 'y':
         break
     reset_game(player=player, dealer=dealer)
     dealer_actions.hand_out_cards(deck=cards,player=player,dealer=dealer)
-    print(player['hand'])
-    print(dealer['hand'])
+    print(f"testing , player just got:  {player['hand']} ")
+    print(f"testing, dealer just got :  {dealer['hand']}")
     #Dealer draws one concealed and one unconcealed card
     #Dealer also hands player his cards
     
+    print(f"Dealer first card is [{dealer['hand'][0]}]")
+    print(f"Your hand  is {player['hand']}")
+    
+    get_score(participant=player)
+    
+    print(player['score'])
     
     #does dealer have blackjack? NO? ok game continues!
      #case Dealer has, does the player also have a blackjack?
