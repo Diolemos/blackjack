@@ -27,6 +27,9 @@ def get_score(participant):
     """
     participant['score'] = sum(participant['hand'])
     
+def dealers_turn():
+    print("dealer draws***")    
+    
 def reset_game(player, dealer):
     player['score']=0
     player['hand']=[]
@@ -64,7 +67,7 @@ while want_to_play == 'y':
     print(f'Testing... Dealer score is : {dealer["score"]}')
     
     print(f"And your score is {player['score']}")
-    is_game_over = dealer_actions.check_for_win(player=player,dealer=dealer,)
+    is_game_over = dealer_actions.check_for_win(player=player,dealer=dealer)
     #does dealer have blackjack? NO? ok game continues!
      #case Dealer has, does the player also have a blackjack?
       #if he does it is a draw, if he doesn't, player loses!
@@ -73,10 +76,23 @@ while want_to_play == 'y':
     if is_game_over :
         continue
    #player draw one more card?
-    
-   #if yes: is player_score > 21? player loser: draw one more card?
-   #if no: if dealer_score =>17 : DEALER STANDS*
-   #ELSE:DEALER DRAWS UNTIL SCORE >= 17*
+    while not is_game_over:
+        draw_another_card = input("Want to draw another card?? type 'y' or 'n'")
+        if draw_another_card == 'y':
+            new_card = random.choice(cards)
+            if new_card == 11 and player['score'] > 7:
+                new_card = 1  
+            player['hand'].append(new_card)
+            get_score(participant=player)
+            get_score(participant=dealer)
+            #draw another card
+            #if yes: is player_score > 21? player loser: draw one more card?
+            is_game_over = dealer_actions.check_for_win(player=player,dealer=dealer)
+        elif draw_another_card == 'n':
+            print("from last elif block")
+            #if no: if dealer_score =>17 : DEALER STANDS*
+            #ELSE:DEALER DRAWS UNTIL SCORE >= 17* 
+            #dealers_turn()
    
    #IS player_score == dealer_score ? DRAW! :
    #player_score > 21 ? Player loses!:

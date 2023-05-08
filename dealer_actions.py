@@ -1,5 +1,6 @@
 import random
-def hand_out_cards(deck, dealer, player):
+
+def hand_out_cards(deck, player, dealer):
     """
     Distributes two cards each to the dealer and the player.
     Args:
@@ -23,12 +24,21 @@ def hand_out_cards(deck, dealer, player):
     and replaces the initial values of dealer_hand and player_hand with the new card values.
     """
     
-    dealer['hand'].append(random.choice(deck))
-    dealer['hand'].append(random.choice(deck))
-    player['hand'].append(random.choice(deck))
-    player['hand'].append(random.choice(deck))
+    for i in range(2):
+        new_card = random.choice(deck)
+        if new_card > 11 and player['score'] > 7:
+                 new_card = 1
+        player['hand'].append(new_card)
+        
+    for i in range(2):
+        new_card = random.choice(deck)
+        if new_card > 11 and dealer['score'] > 7:
+                 new_card = 1
+        dealer['hand'].append(new_card)        
     
-def check_for_win(player, dealer, is_game_over):
+    
+    
+def check_for_win(player, dealer, is_game_over=False):
     """
     Check if either the player or the dealer has won the game or if the game is over.
 
