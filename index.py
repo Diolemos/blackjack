@@ -2,11 +2,25 @@ import art
 import random
 import dealer_actions 
 cards = [11, 2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10, 10]
-dealer_score = 0
-dealer_hand = []
-player_score = 0
-player_hand = []
+# dealer_score = 0
+# dealer_hand = []
+# player_score = 0
+# player_hand = []
 want_to_play = 'y'  
+player = {
+        'score': 0,
+        'hand': []  
+           }
+dealer = {
+        'score': 0,
+        'hand': []  
+           }
+def reset_game(player, dealer):
+    player['score']=0
+    player['hand']=[]
+    dealer['score']=0
+    dealer['hand']=[]
+    
     
 print("welcome to python game blackjack!")
 ############### Our Blackjack House Rules #####################
@@ -18,14 +32,15 @@ print("welcome to python game blackjack!")
 ## The cards in the list have equal probability of being drawn.
 ## Cards are not removed from the deck as they are drawn.
 ## The computer is the dealer.
-while want_to_play == 'y':
+while want_to_play == 'y':    
     want_to_play = input('do you want to play Blackjack? type "y" or "n"')
     #If user types 'n' loop ends!
     if want_to_play.lower() == 'n':
         break
-    dealer_actions.hand_out_cards(deck=cards,player_hand=player_hand,dealer_hand=dealer_hand)
-    print(player_hand)
-    print(dealer_hand)
+    reset_game(player=player, dealer=dealer)
+    dealer_actions.hand_out_cards(deck=cards,player=player,dealer=dealer)
+    print(player['hand'])
+    print(dealer['hand'])
     #Dealer draws one concealed and one unconcealed card
     #Dealer also hands player his cards
     

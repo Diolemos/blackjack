@@ -1,5 +1,5 @@
 import random
-def hand_out_cards(deck, dealer_hand, player_hand):
+def hand_out_cards(deck, dealer, player):
     """
     Distributes two cards each to the dealer and the player from a deck of cards.
 
@@ -24,9 +24,9 @@ def hand_out_cards(deck, dealer_hand, player_hand):
     and replaces the initial values of dealer_hand and player_hand with the new card values.
     """
     
-    dealer_hand.append(random.choice(deck))
-    dealer_hand.append(random.choice(deck))
-    player_hand.append(random.choice(deck))
-    player_hand.append(random.choice(deck))
+    dealer['hand'].append(random.choice(deck))
+    dealer['hand'].append(random.choice(deck))
+    player['hand'].append(random.choice(deck))
+    player['hand'].append(random.choice(deck))
     
     
