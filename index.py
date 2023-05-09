@@ -46,8 +46,12 @@ while not is_game_over:
     while dealer['score'] != 0 and dealer['score'] < 17:
         dealer['hand'].append(dealer_actions.deal_card())
         dealer['score'] = dealer_actions.calculate_score(dealer['hand'])
-        
+print(f"Dealer's final hand is {dealer['hand']} and his score is {dealer['score']}")
+print(f"Your final hand is {player['hand']} with a total score of {player['score']}")        
 print(dealer_actions.compare(player['score'],dealer['score']))        
+
+
+input("Do you want to play a game of Blackjack? type 'y' or 'n'")
         
 # is_game_over = False 
 
