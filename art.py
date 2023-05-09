@@ -22,3 +22,5 @@ logo2 = """
 
 """
 
+
+logo_list = [logo, logo2]
