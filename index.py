@@ -10,7 +10,7 @@ dealer = {
         'score': 0,
         'hand': []  
            }
-
+is_game_over = False
     
 
     
@@ -20,23 +20,28 @@ Hand out 2 cards for each participant
 for i in range(2):
     player['hand'].append(dealer_actions.deal_card())
     dealer['hand'].append(dealer_actions.deal_card())
-player['score'] = dealer_actions.calculate_score(player['hand'])
-dealer['score'] = dealer_actions.calculate_score(dealer['hand'])        
-
-
-print(f" your cards are:{player['hand']}, current score: {player['score']}")
-print(f"The dealer's first card is: {dealer['hand'][0]}")    
     
+while not is_game_over:    
     
+        
+    player['score'] = dealer_actions.calculate_score(player['hand'])
+    dealer['score'] = dealer_actions.calculate_score(dealer['hand'])        
 
-if player['score'] == 0 or dealer['score'] == 0 or player['score'] > 21:
-    is_game_over = True
-else:
-    user_should_deal = input("Type 'y' to get a new card, type 'n' to pass")
-    if user_should_deal == 'y':
-        player['hand'].append(dealer_actions.deal_card())    
+
+    print(f" your cards are:{player['hand']}, current score: {player['score']}")
+    print(f"The dealer's first card is: {dealer['hand'][0]}")    
+        
+        
+
+    if player['score'] == 0 or dealer['score'] == 0 or player['score'] > 21:
+        is_game_over = True
     else:
-        is_game_over = True    
+        user_should_deal = input("Type 'y' to get a new card, type 'n' to pass")
+        if user_should_deal == 'y':
+            player['hand'].append(dealer_actions.deal_card())   
+            player['score']= dealer_actions.calculate_score(player['hand']) 
+        else:
+            is_game_over = True    
 
     
 # is_game_over = False 
