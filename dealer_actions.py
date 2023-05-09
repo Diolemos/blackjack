@@ -19,3 +19,18 @@ def calculate_score(cards):
         cards.append(1)
     return sum(cards)       
     
+def compare( player_score, dealer_score):
+    if player_score == dealer_score:
+        return "It's a Draw 😶 "
+    elif dealer_score == 0:
+        return 'You lose 🫨 Dealer has a Blackjack 😒 '
+    elif player_score == 0:
+        return "You win! 🏆 You got a Blackjack! 🏆 "
+    elif player_score > 21:
+        return "you lose, 😵 You went over 21 😵"
+    elif dealer_score > 21:
+        return "Dealer went over 21, 🤭 you Win!👍"
+    elif player_score > dealer_score:
+        return "You win 😎" 
+    else:
+        return "you lose 😑"

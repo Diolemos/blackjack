@@ -46,6 +46,9 @@ while not is_game_over:
     while dealer['score'] != 0 and dealer['score'] < 17:
         dealer['hand'].append(dealer_actions.deal_card())
         dealer['score'] = dealer_actions.calculate_score(dealer['hand'])
+        
+print(dealer_actions.compare(player['score'],dealer['score']))        
+        
 # is_game_over = False 
 
    
