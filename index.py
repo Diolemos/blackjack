@@ -14,7 +14,9 @@ dealer = {
     
 
     
-
+'''
+Hand out 2 cards for each participant
+'''
 for i in range(2):
     player['hand'].append(dealer_actions.deal_cards())
     dealer['hand'].append(dealer_actions.deal_cards())
